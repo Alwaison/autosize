@@ -126,7 +126,12 @@
     } else {
         // Makes no changes for older browsers (FireFox3- and Safari4-)
         $.fn.autosize = function () {
-            return this;
+            return this.each(function () {
+                // In old browsers, we force a minimum height for keep it usable
+                var 
+                ta = this,
+                $ta = $(ta).css('minHeight', 50);                
+            });
         };
     }
 
